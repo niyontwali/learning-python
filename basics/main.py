@@ -8,7 +8,7 @@
 # # multiline comments
 
 # """This is a multiline
-# comment, you can see when you print the scripts 
+# comment, you can see when you print the scripts
 # it won't show
 # """
 
@@ -177,8 +177,81 @@
 
 # # for loop
 # last_name = "Niyontwali"
-# for x in last_name: 
+# for x in last_name:
 #   print(x)
-# the range function
-for x in range(6):
-  print(x)
+# # the range function
+# for x in range(6):
+#   print(x)
+
+# functions
+# def greating():   # defining our function
+#   print("Hello aspiring python devs")
+# greating()    # calling our function
+
+# def fullname(first_name, last_name):
+#   print("This is my fullname:",first_name + " " + last_name)
+
+# fullname("John", "Niyontwali")
+# def my_function(*kids):
+#   print("The youngest child is " + kids[2])
+
+# my_function("Emil", "Tobias", "Linus")
+
+# def my_function(country = "Norway"):
+#   print("I am from " + country)
+
+# my_function("Sweden")
+# my_function("India")
+# my_function()
+# my_function("Brazil")
+
+# def square(x):
+#    return (x * x)
+# result = square(3)
+# print(f"The result is: ",result)
+
+# def tri_recursion(k):
+#   if(k > 0):
+#     result = k + tri_recursion(k - 1)
+#     print(result)
+#   else:
+#     result = 0
+#   return result
+
+# print("Recursion Example Results")
+# tri_recursion(6)
+# # datetime module
+# import datetime as date
+# x = date.datetime.now()
+# print(x)
+
+# import datetime
+
+# x = datetime.datetime.now()
+
+# print(x.year,"/", x.month, "/",x.day)
+
+# import datetime
+
+# x = datetime.datetime(2020, 5, 17)
+
+# print(x)
+
+# import datetime
+
+# x = datetime.datetime(2018, 6, 1)
+
+# print(x.strftime("%a", "%d"))
+
+# x = min(5, 10, 25)
+# y = max(5, 10, 25)
+# z = min
+
+# print(x)
+# print(y)
+
+import math
+
+x = math.sqrt(64)
+
+print(x)

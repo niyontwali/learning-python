@@ -1,1 +1,0 @@
-) # You will notice that the list is now empty
