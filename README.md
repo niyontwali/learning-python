@@ -15,7 +15,7 @@ A variable is a user-defined name stored in the memory for holding values or a c
 - A variable name cannot be any of [Python reserved keywords](https://www.w3schools.com/python/python_ref_keywords.asp).
 - Variables are sometimes declared using variable names in the format **camelCase**, **PascalCase**, or **snake_case**.
 - Python allows you to assign values to multiple variables in one line.
-  e.g., 
+  e.g.,
   ```python
   x, y, z = "Orange", "Banana", "Cherry"
   print(x)
@@ -54,6 +54,7 @@ print(type(x)) # This will print int
 - Variables created outside of a function are known as global variables, which means they can be accessed by everyone.
 - You can make a variable inside a function globally by using the `global` keyword.
   e.g.,
+
   ```python
   def myfunc():
     global x
@@ -89,6 +90,7 @@ isinstance(object, classinfo)
 - **classinfo**: A single class, data type, or a tuple of classes and types to check against the object.
 
 **Returns**
+
 - `True` if the object is an instance or subclass of `classinfo`, or if the object is one of the types in `classinfo` when it's a tuple.
 - `False` otherwise.
 
@@ -223,15 +225,18 @@ Here's the formatted content with markdown syntax for code:
 
 Booleans represent one of two values: `True` or `False`.
 Almost any value is evaluated to `True` if it has some sort of content.
+
 - Any `string` is `True`, except **empty** strings.
 - Any `number` is `True`, except **0**.
 - Any `list`, `tuple`, `set`, and `dictionary` are `True`, except **empty** ones.
 
 **NOTES:**
+
 - In fact, there are not many values that evaluate to `False`, except empty values, such as `(), [], {}, ""`, the number `0`, and the value `None`. And of course the value `False` evaluates to `False`.
 - One more value, or object in this case, evaluates to `False`, and that is if you have an object that is made from a class with a `__len__` function that returns `0` or `False`
 
 ## List
+
 `Lists` are used to store multiple items in a single variable.
 
 `Lists` are one of **4 built-in data types** in Python used to store collections of data, the other 3 are `Tuple`, `Set`, and `Dictionary`, all with different qualities and usage.
@@ -244,6 +249,7 @@ Almost any value is evaluated to `True` if it has some sort of content.
 my_list = [1, 2, 3, 4, 5]
 print(len(my_list))  # Output: 5
 ```
+
 **list.append(element)**: Adds an element to the end of the list.
 
 ```python
@@ -308,6 +314,7 @@ my_list = [4, 2, 1, 3]
 my_list.sort()
 print(my_list)  # Output: [1, 2, 3, 4]
 ```
+
 **list.extend(iterable)**: Extends the list by appending elements from the iterable.
 
 ```python
@@ -324,15 +331,110 @@ my_list.clear()
 print(my_list)  # Output: []
 ```
 
-These are some of the most commonly used properties and methods of lists in Python 3. 
+These are some of the most commonly used properties and methods of lists in Python 3.
 
 ### List Comprehension
+
 List comprehension offers a shorter syntax when you want to create a new list based on the values of an existing list.
+
+This is how normally you would do it
+
+```python
+fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+newlist = []
+
+for x in fruits:
+  if "a" in x:
+    newlist.append(x)
+
+print(newlist)
+```
+
+**But with List Comprehension this is the syntax on how you would do it**
+
+```python
+fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+
+newlist = [x for x in fruits if "a" in x]
+
+print(newlist)
+```
+
+**The Syntax**
+
+```python
+newlist = [expression for item in iterable if condition == True]
+```
+
+### Sort Lists
+- Sort list alphabetically and numerically:  `list.sort()`. For `descending` you just add in the sort(reverse = True)
+- Sort list using customized functions
+```python
+def myfunc(n):
+  return abs(n - 50)
+
+thislist = [100, 50, 65, 82, 23]
+thislist.sort(key = myfunc)
+print(thislist)
+```
+- By default the sort() method is case sensitive, resulting in all capital letters being sorted before lower case letters. So if you want a case-insensitive sort function, use str.lower as a key function
+```python
+thislist = ["banana", "Orange", "Kiwi", "cherry"]
+thislist.sort(key = str.lower)
+print(thislist)
+```
+- What if you want to reverse the order of a list, regardless of the alphabet? i.e `list.reverse()`
+
+### Copy Lists
+You cannot copy a list simply by typing `list2 = list1`, because: `list2` will only be a reference to `list1`, and changes made in `list1` will automatically also be made in `list2`.
+
+There are ways to make a copy, one way is to use the **built-in** List method `copy()`. Another way to make a copy is to use the built-in method `list()`.
+```python
+thislist = ["apple", "banana", "cherry"]
+mylist = thislist.copy()
+print(mylist)
+```
+
+```python
+thislist = ["apple", "banana", "cherry"]
+mylist = list(thislist)
+print(mylist)
+```
+### Join Lists
+There are several ways to join, or concatenate, two or more lists in Python.
+1. using the + operator
+```python
+list1 = ["a", "b", "c"]
+list2 = [1, 2, 3]
+
+list3 = list1 + list2
+print(list3)
+```
+2. appending all the items from list2 into list1, one by one using for loop
+```python
+list1 = ["a", "b" , "c"]
+list2 = [1, 2, 3]
+
+for x in list2:
+  list1.append(x)
+
+print(list1)
+```
+3. use the extend() method, where the purpose is to add elements from one list to another list
+```python
+list1 = ["a", "b" , "c"]
+list2 = [1, 2, 3]
+
+list1.extend(list2)
+print(list1)
+```
 
 ## Python Operators
 
 Operators are used to perform operations on variables and values. These include
+
 1. Arithmetic Operators
+
 - Addition: `+` (e.g., `x + y`)
 - Subtraction: `-` (e.g., `x - y`)
 - Multiplication: `*` (e.g., `x * y`)
@@ -340,7 +442,9 @@ Operators are used to perform operations on variables and values. These include
 - Modulus: `%` (e.g., `x % y`)
 - Exponentiation: `**` (e.g., `x ** y`)
 - Floor division: `//` (e.g., `x // y`)
+
 2. Assignment Operators
+
 - Assignment: `=` (e.g., `x = 5`)
 - Addition assignment: `+=` (e.g., `x += 3` which is equivalent to `x = x + 3`)
 - Subtraction assignment: `-=` (e.g., `x -= 3` which is equivalent to `x = x - 3`)
@@ -355,24 +459,34 @@ Operators are used to perform operations on variables and values. These include
 - Right shift assignment: `>>=` (e.g., `x >>= 3` which is equivalent to `x = x >> 3`)
 - Left shift assignment: `<<=` (e.g., `x <<= 3` which is equivalent to `x = x << 3`)
 - Walrus operator: `:=` (e.g., `print(x := 3)` assigns 3 to x and prints it, then `print(x)` displays the value of x)
+
 3. Comparison Operators
+
 - Equal to: `==` (e.g., `x == y`)
 - Not equal to: `!=` (e.g., `x != y`)
 - Greater than: `>` (e.g., `x > y`)
 - Less than: `<` (e.g., `x < y`)
 - Greater than or equal to: `>=` (e.g., `x >= y`)
 - Less than or equal to: `<=` (e.g., `x <= y`)
+
 4. Logical Operators
+
 - `and`: Returns True if both statements are true (e.g., `x < 5 and x < 10`)
 - `or`: Returns True if one of the statements is true (e.g., `x < 5 or x < 4`)
 - `not`: Reverses the result, returns False if the result is true (e.g., `not(x < 5 and x < 10)`)
+
 5. Identity Operators
+
 - `is`: Returns True if both variables are the same object (e.g., `x is y`)
 - `is not`: Returns True if both variables are not the same object (e.g., `x is not y`)
+
 6. Membership Operators
+
 - `in`: Returns True if a sequence with the specified value is present in the object (e.g., `x in y`)
 - `not in`: Returns True if a sequence with the specified value is not present in the object (e.g., `x not in y`)
+
 7. Bitwise Operators
+
 - `&`: AND - Sets each bit to 1 if both bits are 1 (e.g., `x & y`)
 - `|`: OR - Sets each bit to 1 if one of two bits is 1 (e.g., `x | y`)
 - `^`: XOR - Sets each bit to 1 if only one of two bits is 1 (e.g., `x ^ y`)
@@ -380,13 +494,13 @@ Operators are used to perform operations on variables and values. These include
 - `<<`: Zero fill left shift - Shift left by pushing zeros in from the right and let the leftmost bits fall off (e.g., `x << 2`)
 - `>>`: Signed right shift - Shift right by pushing copies of the leftmost bit in from the left, and let the rightmost bits fall off (e.g., `x >> 2`)
 
-**NOTE**: 
+**NOTE**:
 Operator precedence describes the order in which operations are performed.
 
 The following list describes the operator precedence in Python, starting from the highest to the lowest:
 
 1. **`()`** - Parentheses
-2. **`**`** - Exponentiation
+2. **`**`\*\* - Exponentiation
 3. **`+x`, `-x`, `~x`** - Unary plus, unary minus, and bitwise NOT
 4. **`*`, `/`, `//`, `%`** - Multiplication, division, floor division, and modulus
 5. **`+`, `-`** - Addition and subtraction
@@ -401,4 +515,104 @@ The following list describes the operator precedence in Python, starting from th
 
 This order defines how expressions containing multiple operators are evaluated in Python. Operators listed earlier have higher precedence and are evaluated before operators lower in the list.
 
+## Python `if statement`
+Python Conditions and If statements
+- Equals: a == b
+- Not Equals: a != b
+- Less than: a < b
+- Less than or equal to: a <= b
+- Greater than: a > b
+- Greater than or equal to: a >= b
 
+These conditions can be used in several ways, most commonly in "if statements" and loops.
+
+Example 1:
+
+```python
+a = 33
+b = 200
+if b > a:
+print("b is greater than a") # you will get an error
+```
+
+Example 2:
+
+```python
+a = 33
+b = 33
+if b > a:
+  print("b is greater than a")
+elif a == b:
+  print("a and b are equal")
+```
+
+Example 3:
+```python
+a = 200
+b = 33
+if b > a:
+  print("b is greater than a")
+elif a == b:
+  print("a and b are equal")
+else:
+  print("a is greater than b")
+```
+### Short Hand If ... Else
+```python
+a = 2
+b = 330
+print("A") if a > b else print("B")
+```
+
+```python
+a = 330
+b = 330
+print("A") if a > b else print("=") if a == b else print("B")
+```
+
+### The pass Statement
+`if` statements cannot be empty, but if you for some reason have an `if` statement with no content, put in the `pass` statement to avoid getting an error.
+
+## Python Loops
+### While Loops
+With the `while` loop we can execute a set of statements as long as a condition is true.
+
+```python
+i = 1
+while i < 6:
+  print(i)
+  i += 1
+```
+#### The break Statement
+With the break statement we can stop the loop even if the while condition is true:
+
+```python
+i = 1
+while i < 6:
+  print(i)
+  if i == 3: # Exit the loop when i is 3 
+    break
+  i += 1
+```
+#### The continue Statement
+With the continue statement we can stop the current iteration, and continue with the next:
+
+```python
+i = 0
+while i < 6:
+  i += 1
+  if i == 3:
+    continue
+  print(i)
+```
+#### The else Statement
+With the `else` statement we can run a block of code once when the condition no longer is true:
+
+```python
+i = 1
+while i < 6:
+  print(i)
+  i += 1
+else:
+  print("i is no longer less than 6")
+```
